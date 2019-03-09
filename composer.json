@@ -17,13 +17,19 @@
         "zendframework/zend-mvc": "^3.0.1",
         "zfcampus/zf-development-mode": "^3.0",
         "zendframework/zftool": "dev-master",
-        "doctrine/orm": "^2.6"
+        "doctrine/doctrine-orm-module": "^2.1",
+        "doctrine/doctrine-module": "^2.1",
+        "doctrine/orm": "^2.6",
+        "symfony/console": "^4.2",
+        "ocramius/package-versions": "^1.4"
+
+        
     },
     "autoload": {
         "psr-4": {
             "Application\\": "module/Application/src/",
 	    "Personnes\\": "module/Personnes/src/"
-        }
+         }
     },
     "autoload-dev": {
         "psr-4": {
@@ -42,5 +48,8 @@
         ],
         "serve": "php -S 0.0.0.0:8080 -t public public/index.php",
         "test": "phpunit"
+    },
+    "config": {
+	"optimize-autoloader": true
     }
 }

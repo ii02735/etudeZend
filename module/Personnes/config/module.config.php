@@ -8,9 +8,31 @@
 
 namespace Personnes;
 
+use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Zend\Router\Http\Literal;
 
 return [
+
+    //Permet la génération des schémas (tables) en entités -> exécution des lignes de commandes :
+    /*
+     * ./vendor/bin/doctrine-module orm:convert-mapping --namespace="Entity\\" --force  --from-database annotation ./module/__NAMESPACE__/src
+     * ./vendor/bin/doctrine-module orm:generate-entities ./module/__NAMESPACE__/src/ --generate-annotations = true
+     */
+    "doctrine" => [
+        "driver" => [
+            __NAMESPACE__.'_driver' => [
+              "class" => AnnotationDriver::class,
+              "cache" => "array",
+              "paths" => [__DIR__."/../src/Entity"]
+            ],
+            'orm_default' => [
+                "drivers" => [
+                    "Entity" => __NAMESPACE__."_driver"
+                ]
+            ]
+        ]
+    ],
+
     'controllers'=>[
       'invokables'=>[
           "FirstController" => Controller\MyController::class,
@@ -24,7 +46,7 @@ return [
                 "options" => [
                     "route" => "/personne",
                     "defaults"=>[
-                    "controller" => "FirstController",
+                    "controller" => Controller\MyController::class,
                     "action" => "index",
                     ],
                 ],
@@ -38,7 +60,7 @@ return [
                         "action" => "template",
                     ],
                 ],
-            ]
+            ],
         ],
     ],
 

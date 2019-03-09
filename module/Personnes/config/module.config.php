@@ -44,7 +44,8 @@ return [
 
     'view_manager' => [
         'template_map' => [
-            "MyTemplate" => __DIR__."/../view/MyTemplate.php"
+            "MyTemplate" => __DIR__."/../view/MyTemplate.php",
+            "Other" => __DIR__."/../view/OtherTemplate.phtml",
         ],
     ],
 ];

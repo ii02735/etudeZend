@@ -7,7 +7,7 @@ use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Personnes\Controller\MyController;
 
-class MyControllerFactory implements FactoryInterface
+class ApiControllerFactory implements FactoryInterface
 {
 
     public function createService(ServiceLocatorInterface $serviceLocator)
@@ -16,7 +16,7 @@ class MyControllerFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $entityManager = $container->get("doctrine.entitymanager.orm_default");
-        return new MyController($entityManager);
+        return new ApiController($entityManager);
     }
 }
 

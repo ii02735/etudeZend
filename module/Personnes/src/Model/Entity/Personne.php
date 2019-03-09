@@ -1,9 +1,8 @@
 <?php
 
-namespace Entity;
+namespace Model\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Personnes\Entity\Entity;
 
 /**
  * Personne
@@ -11,7 +10,7 @@ use Personnes\Entity\Entity;
  * @ORM\Table(name="personne")
  * @ORM\Entity
  */
-class Personne extends Entity
+class Personne
 {
     /**
      * @var int
@@ -25,7 +24,7 @@ class Personne extends Entity
     /**
      * @var string|null
      *
-     * @ORM\Column(name="nom", type="string", length=40, nullable=true)
+     * @ORM\Column(name="nom", type="string", length=50, nullable=true)
      */
     private $nom;
 

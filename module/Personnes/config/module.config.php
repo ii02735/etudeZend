@@ -9,7 +9,9 @@
 namespace Personnes;
 
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
+use Zend\Mvc\Service\ViewJsonStrategyFactory;
 use Zend\Router\Http\Literal;
+use Zend\View\Strategy\JsonStrategy;
 
 return [
 
@@ -27,7 +29,7 @@ return [
             ],
             'orm_default' => [
                 "drivers" => [
-                    "Model\\Entity" => __NAMESPACE__."_driver"
+                    __NAMESPACE__."\Model\Entity" => __NAMESPACE__."_driver"
                 ]
             ]
         ]
@@ -35,8 +37,12 @@ return [
 
     'controllers'=>[
       'invokables'=>[
-          "FirstController" => Controller\MyController::class,
+          Controller\MyController::class,
       ],
+        "factories" => [
+            Controller\ApiController::class => Controller\ApiControllerFactory::class
+        ]
+
     ],
 
     'router' => [
@@ -56,8 +62,18 @@ return [
                 "options" => [
                     "route" => "/MyTemplate",
                     "defaults"=>[
-                        "controller" => "FirstController",
+                        "controller" => Controller\MyController::class,
                         "action" => "template",
+                    ],
+                ],
+            ],
+            "data" => [
+                "type" => Literal::class,
+                "options" => [
+                    "route" => "/Data",
+                    "defaults"=>[
+                        "controller" => Controller\ApiController::class,
+                        "action" => "data",
                     ],
                 ],
             ],
@@ -66,8 +82,11 @@ return [
 
     'view_manager' => [
         'template_map' => [
-            "MyTemplate" => __DIR__."/../view/MyTemplate.php",
+            "MyTemplate" => __DIR__ . "/../view/MyTemplate.phtml",
             "Other" => __DIR__."/../view/OtherTemplate.phtml",
+            "OK" => __DIR__."/../view/OKTemplate.phtml",
+            "Data" => __DIR__."/../view/DataTemplate.phtml",
         ],
+        "strategies" => ["ViewJsonStrategy"],
     ],
 ];

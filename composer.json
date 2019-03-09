@@ -22,15 +22,16 @@
         "doctrine/orm": "^2.6",
         "symfony/console": "^4.2",
         "ocramius/package-versions": "^1.4",
-        "doctrine/migrations": "^2.0"
+        "doctrine/migrations": "^2.0",
+        "zendframework/zend-json": "^3.1"
 
         
     },
     "autoload": {
         "psr-4": {
             "Application\\": "module/Application/src/",
-	    "Personnes\\": "module/Personnes/src/"
-         }
+	        "Personnes\\": "module/Personnes/src/"
+        }
     },
     "autoload-dev": {
         "psr-4": {

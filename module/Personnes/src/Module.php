@@ -18,4 +18,5 @@ class Module implements ConfigProviderInterface
         // TODO: Implement getAutoloaderConfig() method.
         return include __DIR__."/../config/module.config.php";
     }
+
 }

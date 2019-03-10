@@ -1,5 +1,7 @@
 <?php
+use Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain;
 use Doctrine\DBAL\Driver\PDOMySql\Driver;
+use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 
 /**
  * Global Configuration Override
@@ -27,6 +29,27 @@ return [
                 ]
             ]
         ],
-
+        "migrations_configuration" => [
+            "orm_default" => [
+                "name" => "ORM Default Migration",
+                "directory" => __DIR__."/../../data/Migrations/",
+                "namespace" => __NAMESPACE__.   "\\Migrations",
+                "table_name" => "doctrine_migrations",
+            ]
+        ],
+        "driver" => [            
+            "orm_default" => [
+            "class" => MappingDriverChain::class,
+            "drivers" => [
+               "Personnes\\Entity\\" => "my_entity",
+            ]
+        ],
+            "my_entity" => [
+                "class" => AnnotationDriver::class,
+                "cache" => "array",
+                "paths" => __DIR__."/../../module/Personnes/Entity",
+            ],
+        ],
     ],
+    
 ];

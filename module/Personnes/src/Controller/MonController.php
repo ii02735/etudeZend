@@ -4,7 +4,7 @@ namespace Personnes\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Doctrine\ORM\EntityManager;
-use Personnes\Model\Entity\Personne;
+use Personnes\Entity\Personne;
 
 class MonController extends AbstractActionController
 {

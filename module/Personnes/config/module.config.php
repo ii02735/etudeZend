@@ -5,33 +5,28 @@ use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Personnes\Controller\MonController;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
+use Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain;
 return [
     //Permet la génération des schémas (tables) en entités -> exécution des lignes de commandes :
     /*
-     * ./vendor/bin/doctrine-module orm:convert-mapping --namespace="Entity\\" --force  --from-database annotation ./module/__NAMESPACE__/src
-     * ./vendor/bin/doctrine-module orm:generate-entities ./module/__NAMESPACE__/src/ --generate-annotations = true
+     * ./vendor/bin/doctrine-module orm:convert-mapping --namespace=__NAMESPACE_."\\Model\\Entity\\" --force  --from-database annotation ./module/
+     * ./vendor/bin/doctrine-module orm:generate-entities ./module/ --generate-annotations = true     
      */
     "doctrine" => [
         "driver" => [
-            __NAMESPACE__.'_driver' => [
+            "orm_default" => [
+                "class" => MappingDriverChain::class,
+                "drivers" => [
+                    __NAMESPACE__."Entity\\" => "my_entity",
+                ]
+            ],
+            "my_entity" => [
                 "class" => AnnotationDriver::class,
                 "cache" => "array",
-                "paths" => [__DIR__."/../src/Model/Entity/"],
+                "paths" => __DIR__."/../Personnes/src/Entity",
             ],
-            'orm_default' => [
-                "drivers" => [
-                    "Model\\Entity\\" => __NAMESPACE__."_driver"
-                ]
-            ]
         ],
-        "migrations_configuration" => [
-            "orm_default" => [
-                "name" => "ORM Default Migration",
-                "directory" => __DIR__."/../src/Model/Migrations/",
-                "namespace" => "Model\\Migrations",
-                "table_name" => "doctrine_migrations",
-            ]
-        ]
+
     ],
     
     "controllers" => [

@@ -74,7 +74,8 @@ return [
                         "action" => "vue"
                     ]
                 ]
-            ]
+            ],
+            
         ],
     ],
     "view_manager" => [

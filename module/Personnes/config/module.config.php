@@ -28,7 +28,7 @@ return [
             "orm_default" => [
                 "name" => "ORM Default Migration",
                 "directory" => __DIR__."/../src/Model/Migrations/",
-                "namespace" => "Personnes\\Model\Migrations",
+                "namespace" => "Personnes\\Model\\Migrations",
                 "table_name" => "doctrine_migrations",
             ]
         ]

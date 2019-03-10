@@ -75,7 +75,16 @@ return [
                     ]
                 ]
             ],
-            
+            "orm" => [
+                "type" => Literal::class,
+                "options" => [
+                    "route" => "/data",
+                    "defaults" => [
+                        "controller" => MonController::class,
+                        "action" => "data"
+                    ]
+                ]
+            ],
         ],
     ],
     "view_manager" => [

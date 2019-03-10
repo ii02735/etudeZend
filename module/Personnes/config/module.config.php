@@ -2,6 +2,8 @@
 
 namespace Personnes;
 use Zend\Router\Http\Literal;
+use Zend\Router\Http\Segment;
+use Personnes\Controller\MonController;
 
 return [
     
@@ -18,11 +20,24 @@ return [
                 "options" => [
                     "route" => "/monUrl",
                     "defaults" => [
-                    "controller" => Controller\MonController::class,
+                    "controller" => MonController::class,
                     "action" => "index",
                     ],
                 ],
             ],
+            "seconde" => [
+                "type" =>  Segment::class,
+                "options" => [
+                    "route" => "/second[:numero]",
+                    "constraints" => [
+                        "numero" => "[0-9]+"
+                    ],
+                    "defaults" => [
+                        "controller" => MonController::class,
+                        "action" => "seconde",
+                    ]
+                ]
+            ]
             
         ],
     ],

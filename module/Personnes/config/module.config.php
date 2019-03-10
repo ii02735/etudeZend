@@ -20,7 +20,7 @@ return [
             ],
             'orm_default' => [
                 "drivers" => [
-                    __NAMESPACE__."\Model\Entity" => __NAMESPACE__."_driver"
+                    "Model\\Entity\\" => __NAMESPACE__."_driver"
                 ]
             ]
         ],

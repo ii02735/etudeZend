@@ -1,12 +1,29 @@
 <?php
 
-use Personnes;
+namespace Personnes;
+use Zend\Router\Http\Literal;
 
 return [
     
     "controllers" => [
         "invokables" => [
-            Personnes\Controller\MonController::class
+            Controller\MonController::class,
         ],
-    ]
+    ],
+    
+    "router" => [
+        "routes" => [
+            "premiere" => [
+                "type" => Literal::class,
+                "options" => [
+                    "route" => "/monUrl",
+                    "defaults" => [
+                    "controller" => Controller\MonController::class,
+                    "action" => "index",
+                    ],
+                ],
+            ],
+            
+        ],
+    ],
 ];

@@ -7,7 +7,8 @@ class MonController extends AbstractActionController
 {
     public function indexAction()
     {
-        
+        $this->response->setContent("Hello world");
+        return $this->response;
     }
 }
 

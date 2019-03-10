@@ -35,8 +35,8 @@ return [
     ],
     
     "controllers" => [
-        "invokables" => [
-            Controller\MonController::class
+        "factories" => [
+            Controller\MonController::class => Controller\MonControllerFactory::class,
         ]
     ],
 

@@ -4,8 +4,36 @@ namespace Personnes;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Personnes\Controller\MonController;
+use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 return [
-
+    //Permet la génération des schémas (tables) en entités -> exécution des lignes de commandes :
+    /*
+     * ./vendor/bin/doctrine-module orm:convert-mapping --namespace="Entity\\" --force  --from-database annotation ./module/__NAMESPACE__/src
+     * ./vendor/bin/doctrine-module orm:generate-entities ./module/__NAMESPACE__/src/ --generate-annotations = true
+     */
+    "doctrine" => [
+        "driver" => [
+            __NAMESPACE__.'_driver' => [
+                "class" => AnnotationDriver::class,
+                "cache" => "array",
+                "paths" => [__DIR__."/../src/Model/Entity/"],
+            ],
+            'orm_default' => [
+                "drivers" => [
+                    __NAMESPACE__."\Model\Entity" => __NAMESPACE__."_driver"
+                ]
+            ]
+        ],
+        "migrations_configuration" => [
+            "orm_default" => [
+                "name" => "ORM Default Migration",
+                "directory" => __DIR__."/../src/Model/Migrations/",
+                "namespace" => "Personnes\\Model\Migrations",
+                "table_name" => "doctrine_migrations",
+            ]
+        ]
+    ],
+    
     "controllers" => [
         "invokables" => [
             Controller\MonController::class

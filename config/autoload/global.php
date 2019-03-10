@@ -1,4 +1,6 @@
 <?php
+use Doctrine\DBAL\Driver\PDOMySql\Driver;
+
 /**
  * Global Configuration Override
  *
@@ -12,5 +14,19 @@
  */
 
 return [
-    // ...
+    'doctrine' => [
+        "connection" => [
+            "orm_default" => [
+                "driverClass" => Driver::class,
+                "params" => [
+                    "host" => "127.0.0.1",
+                    "user" => "root",
+                    "password" => "root",
+                    "dbname" => "test",
+                    
+                ]
+            ]
+        ],
+
+    ],
 ];

@@ -4,6 +4,7 @@ namespace Personnes\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Doctrine\ORM\EntityManager;
+use Personnes\Model\Entity\Personne;
 
 class MonController extends AbstractActionController
 {
@@ -31,6 +32,12 @@ class MonController extends AbstractActionController
     {
         $view = new ViewModel();
         return $view->setTemplate("view/Vue");
+    }
+    
+    public function dataAction()
+    {
+        $personnes = $this->entityManager->getRepository(Personne::class);
+        return $this->response->setContent($personnes->findAll());
     }
 }
 

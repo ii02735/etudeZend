@@ -17,8 +17,8 @@ return [
 
     //Permet la génération des schémas (tables) en entités -> exécution des lignes de commandes :
     /*
-     * ./vendor/bin/doctrine-module orm:convert-mapping --namespace="Entity\\" --force  --from-database annotation ./module/__NAMESPACE__/src
-     * ./vendor/bin/doctrine-module orm:generate-entities ./module/__NAMESPACE__/src/ --generate-annotations = true
+     * ./vendor/bin/doctrine-module orm:convert-mapping --namespace=__NAMESPACE_."\\Model\\Entity\\" --force  --from-database annotation ./module/
+     * ./vendor/bin/doctrine-module orm:generate-entities ./module/ --generate-annotations = true
      */
     "doctrine" => [
         "driver" => [

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190310174419 extends AbstractMigration
+final class Version20190311130307 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -23,7 +23,6 @@ final class Version20190310174419 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('ALTER TABLE doctrine_migration_versions CHANGE version version VARCHAR(14) NOT NULL');
-        $this->addSql('ALTER TABLE personne CHANGE nom nom VARCHAR(50) DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -32,6 +31,5 @@ final class Version20190310174419 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('ALTER TABLE doctrine_migration_versions CHANGE version version VARCHAR(14) NOT NULL COLLATE utf8_unicode_ci');
-        $this->addSql('ALTER TABLE personne CHANGE nom nom VARCHAR(100) DEFAULT NULL COLLATE latin1_swedish_ci');
     }
 }

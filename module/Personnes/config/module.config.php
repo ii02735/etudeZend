@@ -17,7 +17,7 @@ return [
             "orm_default" => [
                 "class" => MappingDriverChain::class,
                 "drivers" => [
-                    __NAMESPACE__."Entity\\" => "my_entity",
+                    __NAMESPACE__."\Entity\\" => "my_entity",
                 ]
             ],
             "my_entity" => [

@@ -33,7 +33,7 @@ return [
             "orm_default" => [
                 "name" => "ORM Default Migration",
                 "directory" => __DIR__."/../../data/Migrations/",
-                "namespace" => __NAMESPACE__.   "\\Migrations",
+                "namespace" => "Migrations",
                 "table_name" => "doctrine_migrations",
             ]
         ],

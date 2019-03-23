@@ -10,9 +10,8 @@ namespace ApplicationTest\Controller;
 use Application\Controller\IndexController;
 use Zend\Stdlib\ArrayUtils;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
-use Zend\Mvc\Controller\AbstractActionController;
 
-class IndexControllerTest extends AbstractActionController
+class IndexControllerTest extends AbstractHttpControllerTestCase
 {
     public function setUp()
     {

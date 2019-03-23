@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by IntelliJ IDEA.
  * User: yadallee
@@ -90,3 +91,4 @@ return [
         "strategies" => ["ViewJsonStrategy"],
     ],
 ];
+

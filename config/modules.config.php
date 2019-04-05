@@ -1,0 +1,17 @@
+<?php 
+ return[ 
+'Zend\Serializer',
+'Zend\Log',
+'Zend\Paginator',
+'Zend\Session',
+'Zend\Mvc\I18n',
+'Zend\Form',
+'Zend\Cache',
+'Zend\Router',
+'Zend\Validator',
+'ZendDeveloperTools',
+'DoctrineModule',
+'DoctrineORMModule',
+'Application',
+'Monmodule'
+];

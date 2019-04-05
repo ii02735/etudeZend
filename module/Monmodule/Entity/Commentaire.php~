@@ -1,0 +1,46 @@
+<?php
+
+namespace Monmodule\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Commentaire
+ *
+ * @ORM\Table(name="commentaire")
+ * @ORM\Entity
+ */
+class Commentaire
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="texte", type="string", length=300, nullable=false)
+     */
+    private $texte;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="aime", type="integer", nullable=true)
+     */
+    private $aime;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
+
+
+}

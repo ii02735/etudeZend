@@ -1,0 +1,33 @@
+<style>
+    button{
+        background:green;
+        color:white;
+        border-radius:10px;
+        padding:5px;
+        cursor:pointer;
+        display:block;
+    }
+</style>
+<h3>Espace commentaires</h3>
+<form method="post" action="commentPost">
+	<textarea rows="15" cols="50" name="texte"></textarea>
+	<br>
+	<input style="margin:20 0px" type="submit" value="envoyer">
+</form>
+
+<?php foreach ($comment as $data) { 
+    echo "<div class='commentaire'><strong>".$data->getDate()->format('d/m/Y H:m')."</strong><p>".$data->getTexte();
+    echo "<button value=".$data->getId().">Aimer (".$data->getAime().")</button></p></div>";
+}?>
+
+<?= $this->headScript()->appendFile("/js/jquery-3.1.0.min.js","text/javascript") ?>
+<script>
+	$(function(){
+		$(".commentaire").on("click","button",function(){
+			var btn = $(this);
+			$.post("./like",{data:$(this).val()},function(response){
+				btn.text("Aimer (" + response.like+")");
+			});
+		});
+	});
+</script>
